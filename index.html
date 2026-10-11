@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>HistoriesFacts.com</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+body{background:#fff;color:#111;padding:16px 16px 90px}
+.top{position:sticky;top:0;background:#fff;z-index:10;padding:10px 0 12px}
+.search{width:100%;padding:14px 18px;border-radius:14px;background:#f2f2f2;border:none;font-size:15px}
+h2{font-size:19px;font-weight:800;margin:18px 0 12px;display:flex;align-items:center;gap:6px}
+.scroll{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
+.scroll::-webkit-scrollbar{display:none}
+.card{flex:0 0 138px}
+.card img{width:100%;height:195px;object-fit:cover;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.card b{display:block;font-size:11px;margin-top:6px;line-height:1.2;text-transform:uppercase}
+.card p{font-size:12.5px;font-weight:700;margin-top:3px;line-height:1.2}
+.chips{display:flex;gap:10px;overflow-x:auto;margin:16px 0;scrollbar-width:none}
+.chip{padding:9px 18px;background:#f0f0f0;border-radius:22px;font-size:14px;font-weight:600;white-space:nowrap}
+.chip.active{background:#111;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.g-item img{width:100%;height:118px;object-fit:cover;border-radius:14px}
+.g-item p{font-size:11px;font-weight:700;margin-top:5px;line-height:1.25}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;padding:12px 0 18px;font-size:22px}
+</style>
+</head>
+<body>
+<div class="top"><input class="search" placeholder="🔍 Search history title..."></div>
+
+<h2>🔥 Popular History</h2>
+<div class="scroll" id="pop"></div>
+
+<div class="chips">
+<span class="chip active">Action</span><span class="chip">Adventure</span><span class="chip">Mystery</span><span class="chip">Kingdom</span>
+</div>
+
+<h2>Latest History</h2>
+<div class="grid" id="latest"></div>
+
+<div class="bottom"><span>🏠</span><span>🔖</span><span>👤</span></div>
+
+<script>
+const D1R2=[
+{t:"HANG TUAH: THE LOYAL WARRIOR",s:"MALAY LEGEND • 15TH C",n:"Hang Tuah: The Loyal Warrior",i:"https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=500",pop:1},
+{t:"PARAMESWARA: FOUNDER OF MELAKA",s:"MELAKA SULTANATE • 1400s",n:"Parameswara: Founder of Melaka",i:"https://images.unsplash.com/photo-1604608672516-b8fe64a2a2d5?w=500",pop:1},
+{t:"ANCIENT MALAY WARRIORS",s:"TRIBES & WAR • 1300-1400s",n:"Ancient Malay Warriors",i:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500",pop:1},
+{t:"TUN PERAK: CHIEF OF MELAKA",s:"",n:"Tun Perak: Chief of Melaka",i:"https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=500",pop:0},
+{t:"BATTLE OF MALACCA 1511",s:"",n:"Battle of Malacca 1511",i:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500",pop:0},
+{t:"ZHENG HE: MING-MALACCA TRADE",s:"",n:"Zheng He: Ming-Malacca Trade",i:"https://images.unsplash.com/photo-1526772661823-3f88f33771cd?w=500",pop:0},
+{t:"PAHANG KINGDOM RISE",s:"",n:"Pahang Kingdom Rise",i:"https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?w=500",pop:0},
+{t:"MELAKA SULTANATE COURT",s:"",n:"Melaka Sultanate Court",i:"https://images.unsplash.com/photo-1590732596287-2e5060c1f01d?w=500",pop:0},
+{t:"FORTRESS DEFENSE 1500s",s:"",n:"Fortress Defense 1500s",i:"https://images.unsplash.com/photo-1461360228755-6e81c478b882?w=500",pop:0},
+];
+document.getElementById('pop').innerHTML=D1R2.filter(x=>x.pop).map(x=>`
+<div class="card"><img src="${x.i}"><p style="font-size:10px;opacity:.7;margin-top:4px">${x.t}</p><p>${x.n}</p></div>`).join('');
+document.getElementById('latest').innerHTML=D1R2.map(x=>`
+<div class="g-item"><img src="${x.i}"><p>${x.n}</p></div>`).join('');
+</script>
+</body>
+</html>
